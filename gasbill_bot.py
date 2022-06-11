@@ -11,12 +11,14 @@ BOT_KEY = getenv("KEY")
 CLIENT_NUM = getenv("MY_CLIENT_NUM")
 bot = telebot.TeleBot(BOT_KEY)
 
+# bot.set_my_commands([telebot.types.BotCommand("/Gas", "Check Gas Bill")])
+
 
 @bot.message_handler(commands=['Gas'])
 def check_gas_bill(message):
     # print(message.text)
     username = message.from_user.first_name
-    checking_msg = f"שניה איתך {username}, אני בודק רגע, כבר נותן תשובה..."
+    checking_msg = f"שניה איתך {username},\nאני בודק רגע, כבר נותן תשובה..."
     bot.send_message(message.chat.id, checking_msg)
 
     options = webdriver.ChromeOptions()
